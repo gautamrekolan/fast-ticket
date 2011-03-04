@@ -1,4 +1,5 @@
 FastTicket::Application.routes.draw do
+
   resources :tickets
 
   devise_for :users
@@ -8,6 +9,6 @@ FastTicket::Application.routes.draw do
     get "/logout" => "devise/sessions#destroy"
   end
 
-  root :to => "tickets#index"
+  root :to => "rails_admin::Main#index"
 
 end
