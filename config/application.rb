@@ -38,5 +38,13 @@ module FastTicket
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.to_prepare do
+			Devise::SessionsController.layout "sign"
+			Devise::RegistrationsController.layout "sign"
+			Devise::ConfirmationsController.layout "sign"
+			Devise::PasswordsController.layout "sign"
+			Devise::UnlocksController.layout "sign"
+		end
   end
 end

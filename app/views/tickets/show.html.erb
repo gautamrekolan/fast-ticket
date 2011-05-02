@@ -1,25 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", tickets_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_ticket_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", ticket_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.ticket.user_id", :default => t("activerecord.labels.user_id", :default => "User")) %>:</b>
+          <%= @ticket.user_id %>
+        </p>
 
-<p>
-  <b>User:</b>
-  <%= @ticket.user %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.ticket.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @ticket.name %>
+        </p>
 
-<p>
-  <b>Name:</b>
-  <%= @ticket.name %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.ticket.email", :default => t("activerecord.labels.email", :default => "Email")) %>:</b>
+          <%= @ticket.email %>
+        </p>
 
-<p>
-  <b>Email:</b>
-  <%= @ticket.email %>
-</p>
+        <p>
+          <b><%= t("activerecord.attributes.ticket.message", :default => t("activerecord.labels.message", :default => "Message")) %>:</b>
+          <%= @ticket.message %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_ticket_path(@ticket), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), ticket_path(@ticket), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>Message:</b>
-  <%= @ticket.message %>
-</p>
-
-
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
